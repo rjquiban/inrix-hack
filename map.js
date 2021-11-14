@@ -29,19 +29,10 @@ document.getElementById('coordSubmit').addEventListener('click', getInputCoords)
 // post: takes user input of latitude and longitude start and end coordinates, plots
 //       markers, calles next function
 function getInputCoords() {
-    console.log('button pressed!');
-    // var startCoords = {
-    //     lat: document.getElementById("latInputStart").value,
-    //     long: document.getElementById("longInputStart").value,
-    // }
-
-    // var endCoords = {
-    //     lat: document.getElementById("latInputEnd").value,
-    //     long: document.getElementById("longInputEnd").value,
-    // }
-
     startCoords.lat = document.getElementById("latInputStart").value;
     startCoords.long = document.getElementById("longInputStart").value;
+    endCoords.lat = document.getElementById("latInputEnd").value;
+    endCoords.long = document.getElementById("longInputEnd").value;
 
     //TODO: get rid of this
     startCoords.lat = 37.770581;
@@ -58,6 +49,8 @@ function getInputCoords() {
     //adding start and end markers
     var startMarker = L.marker([startCoords.lat, startCoords.long]).addTo(mymap);
     var endMarker = L.marker([endCoords.lat, endCoords.long]).addTo(mymap);
+
+    mymap.setZoomAround([startCoords.lat, startCoords.long], 16);
 }
 
 // pre: assumes passed in valid start and end coordinates

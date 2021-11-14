@@ -39,6 +39,10 @@ label {
     border-radius: 10px;
 }
 
+form {
+    display: block;
+}
+
 #overlay {
     padding: 20px;
     width: 25%;
@@ -58,7 +62,10 @@ label {
     background-color: transparent;
     border-radius: 5px;
     color: white;
-    border: 1px solid white;
+    padding: 5px 15px;
+    border: 2px solid white;
+    display: block;
+    margin: 15px auto 0;
 }
 
 #coordSubmit:hover {
@@ -67,7 +74,6 @@ label {
 }
 
 #map {
-    /* width: 100%;  */
     height: 100vh; 
     z-index: 1;
 }
@@ -78,6 +84,12 @@ label {
     #overlay {
         width: 200px;
         height: 375px;
+    }
+
+    input, label {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
     }
 }
 /* 
