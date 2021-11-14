@@ -10,19 +10,38 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoicmpxdWliYW4iLCJhIjoiY2t2eWR1bWdmY3g5bzJwcGd1NDF2am4wciJ9.pUcq2dVIsskiicxBd57SKg'
 }).addTo(mymap);
 
+var startCoords = {
+    lat: '',
+    long: '',
+}
+var endCoords = {
+    lat: '',
+    long: '',
+}
+
+// Three route array of coordinates
+var r1 = [];
+var r2 = [];
+var r3 = [];
+
+document.getElementById('coordSubmit').addEventListener('click', getInputCoords);
 // pre: assumes user input passed into HTML form
 // post: takes user input of latitude and longitude start and end coordinates, plots
 //       markers, calles next function
 function getInputCoords() {
-    var startCoords = {
-        lat: document.getElementById("latInputStart").value,
-        long: document.getElementById("longInputStart").value,
-    }
+    console.log('button pressed!');
+    // var startCoords = {
+    //     lat: document.getElementById("latInputStart").value,
+    //     long: document.getElementById("longInputStart").value,
+    // }
 
-    var endCoords = {
-        lat: document.getElementById("latInputEnd").value,
-        long: document.getElementById("longInputEnd").value,
-    }
+    // var endCoords = {
+    //     lat: document.getElementById("latInputEnd").value,
+    //     long: document.getElementById("longInputEnd").value,
+    // }
+
+    startCoords.lat = document.getElementById("latInputStart").value;
+    startCoords.long = document.getElementById("longInputStart").value;
 
     //TODO: get rid of this
     startCoords.lat = 37.770581;
@@ -50,24 +69,24 @@ function getRoutes(startLat, startLong, endLat, endLong) {
         method: 'GET',
         headers: {
             'accept': 'application/json',
-            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6ImFtY3Uxemh4bjQiLCJ0b2tlbiI6eyJpdiI6ImQzYmE2MmI4YTdkN2QwMzY4ZTRlYzkyN2Q4MmRlZmIyIiwiY29udGVudCI6IjBiYTkzMzIwY2JjOWExNjQ0ZmI3MWIwNzI2M2MwZGE2ZGYyM2RhNDU3NjgxMzUxZjAxOTNjNzZiNjI5NmNmY2U2Njc2NDAxYzRiY2VmY2YwM2JiYTcwYWQ1NjFlOGM4YTM1Njg5ZmUyOTk4MDQ0MTUzNjFmMmNjZjRmZTU3NmY4N2JlYTI2YTM5ZWI3MDk5YmQ0ZmJmMDMxYjg5MTg3ZGViZTE2NThkZjRhZmJmODhmOTgwM2FkODk2NDA1OGU0YWZkYTZlNDNkNTNlNmMwOTJiZGUzNzVhMWJmYmM5YWU1ZGQ2YTYxMjg5MWM0MTQ5ODJkOTRiNTZhZDY1YzE5NDZhOGVkYjlkN2EyMjkwODNjY2RmYzQ5OTA5OGM3OTM3NzVkZTM0MWE5ZTdlNWYzMDAwNzI1MDExMGU2NDRhYzY4YWU0Mzc2MGI5MjFhZDgwMDRjMmI3YjAxOTQxNzkzMzUxZDFlYjc0OTlhOTllNDFhMjQ1N2IxZjU4ZjI2MzE2ZWU5ZDIwZmI2Yzk4NzY2MDYyZTk2N2JiZjU2YWE1OTM0YzlkY2U5ZGNlNzI4NWJiYWI3NDhhNjJjNDA3MTM3MjJhOTdmMDZlNmM1YmNmYWEwMWYxZDk2MjRkOTM5ZDE3YWY2Zjk5M2JhOWQxNWEyYmJjZjZlNmU3ZjZjMzJkOTZlZWY3YTQ0ZGM0NzFmNmQwMGQ3MDk3MDcxMzEwODJhNzU5YjVhMWM1YmI2NDZiYzNlNDU0N2Y1NTk0MGYyYzNiZDFiZmE2NWM2Mzc5YjA4OWUzMzM3MTg1MjJjMzE3Yzc5ZGQwYTZlNjI0NmRhYmY3MTU1OTgxY2ViYTlmZTM4MTkzMWM4MTAwMTk5M2MwNGEwNjc2NjQxIn0sInNlY3VyaXR5VG9rZW4iOnsiaXYiOiJkM2JhNjJiOGE3ZDdkMDM2OGU0ZWM5MjdkODJkZWZiMiIsImNvbnRlbnQiOiIxNjkzMWUyYTkxZmY4OTM5NjJiNDYwMDgyNTNmNzFkMWU2NzNkNTVjMDk4YTA2MWMyOWUzZmYzYTU4OTlmNmVmNjcwZDNhNTQzZmRhYzBkODM3YTg1NzkzIn0sImp0aSI6ImJkMTgzY2E4LTM1MzEtNDY4OC05MDQyLTg4YzFlYzQyOWE5YSIsImlhdCI6MTYzNjg1NjA2OCwiZXhwIjoxNjM2ODU5NjY3fQ.b_5Aa5CALjakigqvM3v8n2048UvlUoNRAxxFg8-s_Ek'
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InhzMmo4dzJ4bTMiLCJ0b2tlbiI6eyJpdiI6ImQ4MmQwMjhmMzM0OGE3NjQ2ZjdmZjNmNWU0MzVhYjI3IiwiY29udGVudCI6IjMwZDhiNDRhZTFlZDAwNWI4OTUwY2NmZmQ5MGU2YjJkYTMyNmZhMWFmOWNkYjE2M2Q3NDIwZTM2Nzc1OWEyZTkxNWMyNDRhZjAzOTc5ZWVjMTMwMGEyODM4YjkyMmUxMWU3ZDk4OTQzYjVjOTEzZGUwNjVkMWExMjcyMzlhZGNmZDE4ZjYzMzY5YjA1MWRmMTA1ODI1M2VkZTBlNmE0ZjFjY2M2Y2VjODc1Mjg0ZTZiNWFhMzk1Nzk2MTUyOGI3MWFjYjk1ZmU4Y2IyMDJlMTk4MTVjMTk1Y2U2NjM4YTliOThhZmZiZWVhNWY0MjJlZDk4MzRlZWU4YjdiOTBlOTQ2Yjk4YjYxY2Q2ZTUzZTI4YzM5ZTRhZmE0MWQ0ZTU4YjY1NGFkNWFkMmI4ZjAyYjkwNjgwNzY2YTdiMmY5MDYyZDg0NmRiZjBiMGE3ZmVjZmQ0ZDE0M2RmNjRkMWNlNGUzOGQxMjdhY2MzYzhjOGY4ODMxNGMxZGRkOTRlN2E0NjNmOTQ4Mzc3ZDA4ZDU2ZDg1ODBjNzA2YmE1YzliYjc2MmZiZGZiZWQxN2E4NTMzNWY3YWEyNTIxYWRhMTMxN2E3ZjY3NWEwZTk2MTZmMzg4ODBhN2NhY2ViNDNkZjA4MjlhNWY0ZmQzNWMwYTM2NGI2OTg0N2Q1MjI0MzRkOGM4YjYyOGQxODc3ZjljYjZmMTlmMzFjY2QxM2JlZDQwNzU3ZmQzNzE4OTA5NWQ4NWEyMjY5NzdlMTFjNzc1ZWY0OGI5ZWU4MGZkNDQ4ZWJiYmI5M2E5NTBlNTdiMzk5NWRmYjJiNDlmNjMxMTRjMWFlZDY3YWM3MTI5MDdiMDg0ZmQ1ZGY2NTMzMDJhMDgwNmIyMDI3ZDA5In0sInNlY3VyaXR5VG9rZW4iOnsiaXYiOiJkODJkMDI4ZjMzNDhhNzY0NmY3ZmYzZjVlNDM1YWIyNyIsImNvbnRlbnQiOiIzY2QxYzY2ZGU4ZTUzYTA2YTEwZmQxOWNkYzEyNmEyYTgwM2Y5ZTIwYzhmMDk2NjJkYTYwMWU3OTU4MWY4MGU1NzZkNDQ0YTQxZDg2ZDZmMzJkMzFkMmJkIn0sImp0aSI6IjkxNmJhY2UxLTUxZWItNDc3NS05ZGRmLWM3OGIwNGUyMTY2NiIsImlhdCI6MTYzNjg3NDMxNywiZXhwIjoxNjM2ODc3OTE3fQ.trCkVZdm1mDAEGjEnRLT4PwN6lShLFadqcyySqaz1QA'
         }
     })
     .then((res) => res.json())
     .then((data) => {
-        const route1Points = data.result.trip.routes[0].points.coordinates;
-        console.log(route1Points);
-        const route2Points = data.result.trip.routes[1].points.coordinates;
-        console.log(route2Points);
-        const route3Points = data.result.trip.routes[2].points.coordinates;
-        console.log(route3Points);
-        mapRoutes(route1Points, route2Points, route3Points);
+        r1 = data.result.trip.routes[0].points.coordinates;
+        console.log(r1);
+        r2 = data.result.trip.routes[1].points.coordinates;
+        console.log(r2);
+        r3 = data.result.trip.routes[2].points.coordinates;
+        console.log(r3);
+        mapRoutes();
     });   
 }
 
 // pre: takes in 3 coordinate objects
 // post: creates geojson objects and plots routes on maps
-function mapRoutes(r1, r2, r3) {
+function mapRoutes() {
     var myLines = [{
         "type": "LineString",
         "coordinates": r1,
@@ -93,4 +112,27 @@ function mapRoutes(r1, r2, r3) {
     L.geoJSON(myLines[2], {
         style: greenLine
     }).addTo(mymap); 
+
+    // Take routes and compare to incident reports
+    parseJSON();
 }
+
+function parseJSON() {
+    fetch('sfcrimes.json')
+    .then(res => res.text())
+    .then(data => {
+        crimes = JSON.parse(data);
+        let r1Sum, r2Sum, r3Sum = 0; // Total amount of incidents on each route
+        r1.forEach(coord => {
+            r1Sum += crimes.filter(crime => (crime.Latitude.substring(0,8)===coord[1].toString().substring(0,8) && crime.Longitude.substring(0,8)===coord[0].toString().substring(0,8))).length; 
+        })
+        r2.forEach(coord => {
+            r2Sum += crimes.filter(crime => (crime.Latitude.substring(0,8)===coord[1].toString().substring(0,8) && crime.Longitude.substring(0,8)===coord[0].toString().substring(0,8))).length; 
+        })
+        r3.forEach(coord => {
+            r3Sum += crimes.filter(crime => (crime.Latitude.substring(0,8)===coord[1].toString().substring(0,8) && crime.Longitude.substring(0,8)===coord[0].toString().substring(0,8))).length; 
+        })
+        console.log("Route 1 Incident Sum: "+ r1Sum + "\nRoute 2 Incident Sum: " + r2Sum + "\nRoute 3 Incident Sum: " + r3Sum);
+    });
+}
+
