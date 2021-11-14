@@ -30,6 +30,10 @@ button, input, select, textarea, label {
     font-size: 100%;
 }
 
+input {
+    padding-left: 5px;
+}
+
 label {
     width: 175px;
 }

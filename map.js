@@ -62,7 +62,7 @@ function getRoutes(startLat, startLong, endLat, endLong) {
         method: 'GET',
         headers: {
             'accept': 'application/json',
-            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InhzMmo4dzJ4bTMiLCJ0b2tlbiI6eyJpdiI6ImQ4MmQwMjhmMzM0OGE3NjQ2ZjdmZjNmNWU0MzVhYjI3IiwiY29udGVudCI6IjMwZDhiNDRhZTFlZDAwNWI4OTUwY2NmZmQ5MGU2YjJkYTMyNmZhMWFmOWNkYjE2M2Q3NDIwZTM2Nzc1OWEyZTkxNWMyNDRhZjAzOTc5ZWVjMTMwMGEyODM4YjkyMmUxMWU3ZDk4OTQzYjVjOTEzZGUwNjVkMWExMjcyMzlhZGNmZDE4ZjYzMzY5YjA1MWRmMTA1ODI1M2VkZTBlNmE0ZjFjY2M2Y2VjODc1Mjg0ZTZiNWFhMzk1Nzk2MTUyOGI3MWFjYjk1ZmU4Y2IyMDJlMTk4MTVjMTk1Y2U2NjM4YTliOThhZmZiZWVhNWY0MjJlZDk4MzRlZWU4YjdiOTBlOTQ2Yjk4YjYxY2Q2ZTUzZTI4YzM5ZTRhZmE0MWQ0ZTU4YjY1NGFkNWFkMmI4ZjAyYjkwNjgwNzY2YTdiMmY5MDYyZDg0NmRiZjBiMGE3ZmVjZmQ0ZDE0M2RmNjRkMWNlNGUzOGQxMjdhY2MzYzhjOGY4ODMxNGMxZGRkOTRlN2E0NjNmOTQ4Mzc3ZDA4ZDU2ZDg1ODBjNzA2YmE1YzliYjc2MmZiZGZiZWQxN2E4NTMzNWY3YWEyNTIxYWRhMTMxN2E3ZjY3NWEwZTk2MTZmMzg4ODBhN2NhY2ViNDNkZjA4MjlhNWY0ZmQzNWMwYTM2NGI2OTg0N2Q1MjI0MzRkOGM4YjYyOGQxODc3ZjljYjZmMTlmMzFjY2QxM2JlZDQwNzU3ZmQzNzE4OTA5NWQ4NWEyMjY5NzdlMTFjNzc1ZWY0OGI5ZWU4MGZkNDQ4ZWJiYmI5M2E5NTBlNTdiMzk5NWRmYjJiNDlmNjMxMTRjMWFlZDY3YWM3MTI5MDdiMDg0ZmQ1ZGY2NTMzMDJhMDgwNmIyMDI3ZDA5In0sInNlY3VyaXR5VG9rZW4iOnsiaXYiOiJkODJkMDI4ZjMzNDhhNzY0NmY3ZmYzZjVlNDM1YWIyNyIsImNvbnRlbnQiOiIzY2QxYzY2ZGU4ZTUzYTA2YTEwZmQxOWNkYzEyNmEyYTgwM2Y5ZTIwYzhmMDk2NjJkYTYwMWU3OTU4MWY4MGU1NzZkNDQ0YTQxZDg2ZDZmMzJkMzFkMmJkIn0sImp0aSI6IjkxNmJhY2UxLTUxZWItNDc3NS05ZGRmLWM3OGIwNGUyMTY2NiIsImlhdCI6MTYzNjg3NDMxNywiZXhwIjoxNjM2ODc3OTE3fQ.trCkVZdm1mDAEGjEnRLT4PwN6lShLFadqcyySqaz1QA'
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6ImFtY3Uxemh4bjQiLCJ0b2tlbiI6eyJpdiI6IjM4OGI3MmU1YTU3YTliNmU3NWQ2YWFlODEzMjdiMTc4IiwiY29udGVudCI6Ijg3YTQ3MjIyYTQwZWRjZTYxMDJmNjQ4MDQ4MjZlZTJiYTIxNzM2MmVkY2NlYTNjNTgwNzMwOTg0ZTQxMjg0ZTY0ZDlkY2EzOGZlNzE0ODhjMDY3MGU0ODdkYzE5MmU1ZjhlM2Q2Y2Q3NjBiNWQ3Y2IzODQ1MmUyYWM5ODBjNDg1YTRiNzM3YTM4ZTc4N2EzOTAyNjBiYWYxMzg3NTc2NTY0ZDRjYWQ0NGJkMDgzY2E1ZTdiNzVjOGY0MjllOTUxYmZjOThmYjMyYjEzYzI1ZjVmZDcyZDg4MjIyNWUzNTFkNzY4NGIwOGQwN2M3NTNlZjgxMDEwNTYzNDVjY2UwMTY1MDA0ZmJhZmYwOTE5OTMxMzZlYmY4YWMzZWE3YzEyOWVmYThiMDhkYzIxZTEwMTZiYWMyNDY4M2VjYjg3OGQ0NzExODMxOTI1ZDk3Yzc3MDNmY2RlNWNlMWNjOTk1ZTI3MzY4YzBmMzEyZjJjMjUzNjYxNmFhNWJlZGIwN2JkODI4NTU1NDAwMjVlZDc0ZGU5YWM2NTYwYmIzZGNjNTVmMWQyMTUyMTY2MjYzNDAzN2NhN2VjNmQyMzUyOTkwYWFiMzhmNTZlODk0ZDFiNzA4NWI4NTk3NzBhNjBjOGRiNTEyZmMyMTU1ODEyNTdkN2NlY2Q3N2RmZTUwMDQyNjRhODRlYjdjNDFiMzY5ZWM2NTZlYjA4NTY0YzZjNjFhNWUzMzQ5MjRmMzkwZDgzMzgwMGRiODZhZDVlMmFiY2M3ZDk5M2E4OTJjYTE3MGI5NDhkYTgwZmExYTAwODA2ZjA3YzdjYmIyZjczZjJmZjAwOGM5YzI1ZDA3NDQ0N2ViZTdkYTU2NWUwNmI1ODVhNjNkMmJkMzIyIn0sInNlY3VyaXR5VG9rZW4iOnsiaXYiOiIzODhiNzJlNWE1N2E5YjZlNzVkNmFhZTgxMzI3YjE3OCIsImNvbnRlbnQiOiI4Nzk5NzkwNmY3NzBkMGJjMmQwYzQ4OWQ3MzJjZDMzNzk1MDczMzE4ZWM4ZGEyOTU4MTUxM2FlNTg3MDA4N2ZmNzA5YmYxNzlhNjI2N2ViMTI0NTBjM2I5In0sImp0aSI6ImQ1ODRlYjI2LWUzZWEtNGNjOS1iYzcxLTIzY2Q1ZWI2YjY1NSIsImlhdCI6MTYzNjg3OTIwMSwiZXhwIjoxNjM2ODgyODAwfQ.zKlM1mN_bkL8_mdjboaqxYIkYC_2CgLRhcjWuJLcjVo'
         }
     })
     .then((res) => res.json())
@@ -73,41 +73,41 @@ function getRoutes(startLat, startLong, endLat, endLong) {
         console.log(r2);
         r3 = data.result.trip.routes[2].points.coordinates;
         console.log(r3);
-        mapRoutes();
+        parseJSON();
     });   
 }
 
 // pre: takes in 3 coordinate objects
 // post: creates geojson objects and plots routes on maps
-function mapRoutes() {
+function mapRoutes(safe1, safe2, safe3) {
     var myLines = [{
         "type": "LineString",
-        "coordinates": r1,
+        "coordinates": safe1,
     }, {
         "type": "LineString",
-        "coordinates": r2,
+        "coordinates": safe2,
     }, {
         "type": "LineString",
-        "coordinates": r3,
+        "coordinates": safe3,
     }];
 
     var redLine = {"color": "#cc2121"};
-    var blueLine = {"color": "#215acc"};
+    var yellowLine = {"color": "#f2b200"};
     var greenLine = {"color": "#0e9941"};
 
     //adding route lines to map
-    L.geoJSON(myLines[0], {
-        style: redLine
+    L.geoJSON(myLines[2], {
+        style: redLine,
+        weight: 5,
     }).addTo(mymap); 
     L.geoJSON(myLines[1], {
-        style: blueLine
+        style: yellowLine,
+        weight: 5,
     }).addTo(mymap); 
-    L.geoJSON(myLines[2], {
-        style: greenLine
+    L.geoJSON(myLines[0], {
+        style: greenLine,
+        weight: 8,
     }).addTo(mymap); 
-
-    // Take routes and compare to incident reports
-    parseJSON();
 }
 
 function parseJSON() {
@@ -125,7 +125,24 @@ function parseJSON() {
         r3.forEach(coord => {
             r3Sum += crimes.filter(crime => (crime.Latitude.substring(0,8)===coord[1].toString().substring(0,8) && crime.Longitude.substring(0,8)===coord[0].toString().substring(0,8))).length; 
         })
+
+        // if(r1Sum == r2Sum || r2Sum == r3Sum || r1Sum == r3sum) {
+
+        // }
+
+        // pass sums to function that evaluates routes
+        mapRoutes(r1, r2, r3);
+
         console.log("Route 1 Incident Sum: "+ r1Sum + "\nRoute 2 Incident Sum: " + r2Sum + "\nRoute 3 Incident Sum: " + r3Sum);
     });
 }
 
+// Aaron/Jodi --> returns integers (string) of cars per route
+// function that evaluates routes based on
+    // 1) # of crimes
+    // 2) # of cars (used to determine ties between routes that have equal incident reports)
+    // pass in routes from most safe to least safe 
+    // mapRoutes();
+// color routes based on evaluation
+
+// function rankRoutes()
