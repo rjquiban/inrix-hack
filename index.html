@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="styles.css">
 
@@ -15,10 +15,24 @@
     <title>Inrix Hack</title>
 </head>
 <body>
-    <h1>Inrix Hack</h1>
-    <h2>by Aaron, Chris, Jodi, Kavitha, Rayan, and RJ</h2>
+    <div id="overlay">
+        <h1>Inrix Hack</h1>
+        <h5>by Aaron, Chris, Jodi, Kavitha, Rayan, and RJ</h5>
+        <form>
+            <label for="latInputStart">Latitude Input Start</label>
+            <input type="text" id="latInputStart"><br>
+            <label for="longInputStart">Longitude Input Start</label>
+            <input type="text" id="longInputStart"><br>
+            <label for="latInputEnd">Latitude Input End</label>
+            <input type="text" id="latInputEnd"><br>
+            <label for="longInputEnd">Longitude Input End</label>
+            <input type="text" id="longInputEnd"><br>
+            <input type="button" id="coordSubmit" value="Search!" onclick="getInputCoords()">
+        </form>
+    </div>
 
     <div id="map"></div>
 
+    <script type="text/javascript" src="map.js"></script>
 </body>
 </html>
