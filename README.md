@@ -1,4 +1,5 @@
 # inrix-hack
-Santa Clara University's Inrix Hack
+Smart Walk
+by Aaron Ancheta, Chris Tamayo, Jodi Chui, Kavitha Vinod, Rayan Sanatkar, and RJ Quiban
 
-Map provided by leaflet
+Santa Clara University's Inrix Hack
