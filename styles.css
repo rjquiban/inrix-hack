@@ -23,9 +23,19 @@ p {
     margin:0;
 }
 
-button, input, select, textarea {
+button, input, select, textarea, label {
     font-family: inherit;
+    display: inline-block;
+    margin: 5px;
     font-size: 100%;
+}
+
+label {
+    width: 175px;
+}
+
+.inputBox {
+    width: 150px;
 }
 
 #overlay {
@@ -46,7 +56,7 @@ button, input, select, textarea {
     background-color: transparent;
     border-radius: 5px;
     color: white;
-    border: 1px solid white
+    border: 1px solid white;
 }
 
 #coordSubmit:hover {
@@ -59,3 +69,18 @@ button, input, select, textarea {
     height: 100vh; 
     z-index: 1;
 }
+
+/* @media (min-width: 576px) { ... } */
+
+@media (max-width: 1430px) { 
+    #overlay {
+        width: 200px;
+        height: 375px;
+    }
+}
+/* 
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... } */
