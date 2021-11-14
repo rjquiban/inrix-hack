@@ -1,3 +1,61 @@
-#map { 
-    height: 180px; 
+:root {
+    --dark-blue: #002d72;
+}
+
+body{
+    font-family:"Open Sans", sans-serif;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    margin: 0;
+}
+
+h4, h5 {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-family:"Open Sans", sans-serif;
+    margin:0;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+}
+
+#overlay {
+    padding: 20px;
+    width: 25%;
+    height: 35%;
+    color: white;
+    margin: 2% 60px;
+    float: left;
+    border-radius: 20px;
+    background-color: var(--dark-blue);
+    position: absolute;
+    z-index: 2;
+    display: inline;
+}
+
+#coordSubmit {
+    background-color: transparent;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid white
+}
+
+#coordSubmit:hover {
+    background-color: white;
+    color: var(--dark-blue);
+}
+
+#map {
+    /* width: 100%;  */
+    height: 100vh; 
+    z-index: 1;
 }
