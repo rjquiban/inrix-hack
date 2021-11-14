@@ -36,6 +36,7 @@ label {
 
 .inputBox {
     width: 150px;
+    border-radius: 10px;
 }
 
 #overlay {
@@ -50,6 +51,7 @@ label {
     position: absolute;
     z-index: 2;
     display: inline;
+    border: 5px solid white;
 }
 
 #coordSubmit {
